@@ -1,5 +1,4 @@
-import React from 'react';
-import { Trophy, Award, Medal, Star, Calendar, MapPin } from 'lucide-react';
+import { Trophy, Award, Calendar, MapPin } from 'lucide-react';
 
 const AchievementsSection = () => {
   const achievements = [

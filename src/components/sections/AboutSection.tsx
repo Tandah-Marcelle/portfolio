@@ -1,7 +1,4 @@
-import React from 'react';
-import { Code, Heart, Lightbulb, Award, Users, Zap, Coffee } from 'lucide-react';
-import { Image } from 'lucide-react';
-import Image1 from '../../assets/images/me.png';
+import { Heart, Lightbulb, Award, Zap } from 'lucide-react';
 
 const AboutSection = () => {
   return (
@@ -21,7 +18,7 @@ const AboutSection = () => {
             <div className="relative">
               <div className="absolute -inset-4  rounded-lg blur opacity-25"></div>
               <img 
-                src = {Image1} 
+                src="https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=600" 
                 alt="Sarah Johnson working" 
                 className="relative w-full h-96 object-cover rounded-lg shadow-xl"
               />

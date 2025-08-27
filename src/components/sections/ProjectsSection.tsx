@@ -1,21 +1,32 @@
-import React, { useState } from 'react';
-import { ExternalLink, Github, Star, X, Play, Award } from 'lucide-react';
-import { Image } from 'lucide-react';
-import image1 from '../../assets/images/tamo_secures.png';
-import image2 from '../../assets/images/djnails.png';
-import image3 from '../../assets/images/image0.png';
-import image4 from '../../assets/images/galiomob.png';
-import { Video } from 'lucide-react'; 
-import tamoSecuresVideo from '../../assets/videos/tamo secures/tamo-secures.mp4';
-import image5 from '../../assets/images/medassist.png';
+import { useState } from 'react';
+import { ExternalLink, Star, X, Play } from 'lucide-react';
+
+// Using placeholder images since actual assets are not found
+const image1 = 'https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&w=800';
+const image2 = 'https://images.pexels.com/photos/3764579/pexels-photo-3764579.jpeg?auto=compress&cs=tinysrgb&w=800';
+const image3 = 'https://images.pexels.com/photos/6327254/pexels-photo-6327254.jpeg?auto=compress&cs=tinysrgb&w=800';
+const image4 = 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800';
+const image5 = 'https://images.pexels.com/photos/3279203/pexels-photo-3279203.jpeg?auto=compress&cs=tinysrgb&w=800';
+const tamoSecuresVideo = 'https://www.w3schools.com/html/mov_bbb.mp4'; // Placeholder video
+
+interface ProjectDescription {
+  title: string;
+  image?: string;
+  videoPath?: string;
+  isPrivateApp?: boolean;
+  isTestVersion?: boolean;
+  liveUrl?: string;
+  description: string;
+  features: string[] | Array<{ category: string; items: string[] }>;
+}
 
 const ProjectsSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectDescription | null>(null);
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
 
-  const openModal = (project) => {
+  const openModal = (project: ProjectDescription) => {
     setSelectedProject(project);
     setIsModalOpen(true);
   };
@@ -25,7 +36,7 @@ const ProjectsSection = () => {
     setSelectedProject(null);
   };
 
-  const openImagePreview = (imageSrc) => {
+  const openImagePreview = (imageSrc: string) => {
     setPreviewImage(imageSrc);
     setIsImagePreviewOpen(true);
   };
@@ -90,6 +101,7 @@ const ProjectsSection = () => {
 
   const tamoSecuresFullDescription = {
     title: "TAMO SECURES - Gender-Based Violence Prevention System (Version1)",
+    description: "A comprehensive Gender-Based Violence prevention system with mobile app, panic button, community support, and real-time location tracking for victim safety and support.",
     videoPath: tamoSecuresVideo,
     features: [
       {
@@ -227,10 +239,6 @@ const ProjectsSection = () => {
                         <Star size={12} />
                         <span className="text-xs">{project.stats.stars}</span>
                       </div>
-                      <div className="flex items-center space-x-1">
-                        <Github size={12} />
-                        <span className="text-xs">{project.stats.forks}</span>
-                      </div>
                     </div>
                   </div>
                   
@@ -333,7 +341,7 @@ const ProjectsSection = () => {
                       src={selectedProject.image}
                       alt={selectedProject.title}
                       className="w-full max-h-80 object-cover rounded-lg cursor-pointer"
-                      onClick={() => openImagePreview(selectedProject.image)}
+                      onClick={() => selectedProject.image && openImagePreview(selectedProject.image)}
                     />
                     <p className="text-xs text-gray-500 mt-2">Click image to view in full size</p>
                   </div>
@@ -347,13 +355,16 @@ const ProjectsSection = () => {
                 {/* Features List */}
                 {selectedProject.features && (
                   <div className="space-y-6">
-                    {Array.isArray(selectedProject.features[0]) ? (
+                    {Array.isArray(selectedProject.features) && 
+                     selectedProject.features.length > 0 && 
+                     typeof selectedProject.features[0] === 'object' && 
+                     'category' in selectedProject.features[0] ? (
                       /* TAMO SECURES format with categories */
-                      selectedProject.features.map((section, index) => (
+                      (selectedProject.features as Array<{ category: string; items: string[] }>).map((section, index) => (
                         <div key={index}>
                           <h3 className="text-lg font-semibold mb-3 text-blue-600">{section.category}</h3>
                           <ul className="space-y-2">
-                            {section.items.map((item, itemIndex) => (
+                            {section.items.map((item: string, itemIndex: number) => (
                               <li key={itemIndex} className="flex items-start">
                                 <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                                 <span className="text-gray-700 text-sm leading-relaxed">{item}</span>
@@ -367,7 +378,7 @@ const ProjectsSection = () => {
                       <div>
                         <h3 className="text-lg font-semibold mb-3 text-blue-600">Key Features</h3>
                         <ul className="space-y-2">
-                          {selectedProject.features.map((feature, index) => (
+                          {(selectedProject.features as string[]).map((feature: string, index: number) => (
                             <li key={index} className="flex items-start">
                               <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                               <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>

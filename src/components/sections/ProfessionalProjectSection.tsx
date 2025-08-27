@@ -1,5 +1,4 @@
-import React from 'react';
-import { Target, Database, Shield, TrendingUp, Calendar, Users, AlertTriangle, Heart } from 'lucide-react';
+import { Target, Database, TrendingUp, Calendar, Users, AlertTriangle, Heart } from 'lucide-react';
 
 const ProfessionalProjectSection = () => {
   const projectElements = [

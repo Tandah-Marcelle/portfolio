@@ -1,5 +1,4 @@
-import React from 'react';
-import { ArrowDown, Github, Linkedin, Mail, Download } from 'lucide-react';
+import { ArrowDown, Linkedin, Mail, Download } from 'lucide-react';
 
 const HeroSection = () => {
   const downloadCV = () => {
