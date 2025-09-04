@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +8,8 @@ const ContactSection = () => {
     subject: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -18,10 +20,33 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(true);
+    
+    // Format message for WhatsApp
+    const whatsappMessage = `*New Contact Form Submission*%0A%0A` +
+      `*Name:* ${formData.name}%0A` +
+      `*Email:* ${formData.email}%0A` +
+      `*Subject:* ${formData.subject}%0A%0A` +
+      `*Message:*%0A${formData.message}`;
+    
+    // Your WhatsApp number (replace with your actual number)
+    const whatsappNumber = '237693450585'; // Remove + and spaces
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
+    
+    // Show success message
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setShowSuccess(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
+    }, 1000);
   };
 
   return (
@@ -82,6 +107,19 @@ const ContactSection = () => {
 
           {/* Contact Form */}
           <div className="bg-gray-50 p-8 rounded-xl">
+            {/* Success Message */}
+            {showSuccess && (
+              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center">
+                <CheckCircle className="text-green-600 mr-3" size={20} />
+                <div>
+                  <h4 className="font-semibold text-green-800">Message Sent Successfully! 🎉</h4>
+                  <p className="text-sm text-green-700 mt-1">
+                    Thank you for reaching out! This marks the beginning of what I believe will be a long and fruitful professional journey together. I'm excited about the possibilities ahead and look forward to collaborating with you to bring amazing ideas to life.
+                  </p>
+                </div>
+              </div>
+            )}
+            
             <form onSubmit={handleSubmit} className="space-y-3">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
@@ -150,10 +188,22 @@ const ContactSection = () => {
 
               <button
                 type="submit"
-                className="w-full btn-primary flex items-center justify-center"
+                disabled={isSubmitting}
+                className={`w-full btn-primary flex items-center justify-center transition-all duration-300 ${
+                  isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:shadow-lg'
+                }`}
               >
-                <Send size={14} className="mr-2" />
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send size={14} className="mr-2" />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>
