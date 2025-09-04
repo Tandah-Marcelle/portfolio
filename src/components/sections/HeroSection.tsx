@@ -1,4 +1,7 @@
 import { ArrowDown, Linkedin, Mail, Download } from 'lucide-react';
+import { Image } from 'lucide-react';
+import Image1 from "../../assets/images/me.png";
+
 
 const HeroSection = () => {
   const downloadCV = () => {
@@ -62,7 +65,7 @@ const HeroSection = () => {
               <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-blue-600 p-1 animate-pulse-gentle">
                 <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
                   <img 
-                    src="https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=300" 
+                    src={Image1}
                     alt="Tandah Djimeli Marcelle" 
                     className="w-28 h-28 rounded-full object-cover"
                   />

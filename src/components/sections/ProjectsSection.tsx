@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { ExternalLink, Star, X, Play } from 'lucide-react';
+import { Image } from 'lucide-react';
+import Image1 from "../../assets/images/tamo_secures.png";
+import Image2 from "../../assets/images/djnails.png";
+import Image3 from "../../assets/images/image0.png";
+import Image4 from "../../assets/images/galiomob.png";
+import Image5 from "../../assets/images/medassist.png";
+import tamoSecuresVideo from '../../assets/videos/tamo secures/tamo-secures.mp4';
 
-// Using placeholder images since actual assets are not found
-const image1 = 'https://images.pexels.com/photos/6347888/pexels-photo-6347888.jpeg?auto=compress&cs=tinysrgb&w=800';
-const image2 = 'https://images.pexels.com/photos/3764579/pexels-photo-3764579.jpeg?auto=compress&cs=tinysrgb&w=800';
-const image3 = 'https://images.pexels.com/photos/6327254/pexels-photo-6327254.jpeg?auto=compress&cs=tinysrgb&w=800';
-const image4 = 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800';
-const image5 = 'https://images.pexels.com/photos/3279203/pexels-photo-3279203.jpeg?auto=compress&cs=tinysrgb&w=800';
-const tamoSecuresVideo = 'https://www.w3schools.com/html/mov_bbb.mp4'; // Placeholder video
+
 
 interface ProjectDescription {
   title: string;
@@ -48,7 +49,7 @@ const ProjectsSection = () => {
 
   const edenFullDescription = {
     title: "EDEN - Doctor Companion App for PDMD",
-    image: image3,
+    image: Image3,
     isPrivateApp: true,
     description: "The EDEN mobile app for the PDMD (Plateforme de Diagnostic Médical de Douala) helps first of all to have an overall view of the number of doctors with which the medical structure is in partnership with, helps to get their professional and personal information, helps the doctors to see the commissions they have on each patient they send to the PDMD for diagnostic services, including medical imaging (MRI, scanner), advanced laboratory analyses, and specialized screening tests.",
     features: [
@@ -60,7 +61,7 @@ const ProjectsSection = () => {
 
   const galioFullDescription = {
     title: "GALIO - Lecturer Companion App",
-    image: image4,
+    image: Image4,
     description: "GALIO is a comprehensive mobile-based institutional activity follow-up system designed for teachers and administrative staff to manage their academic responsibilities, course selections, schedules, and institutional requests efficiently.",
     features: [
       "Profiling Update: Allows teachers and administrative staff to manage their personal and professional information within the Galio mobile app. Users can view their current profile details, including their role at the university (full-time lecturer, part-time lecturer, administrative staff, or support staff), department, and legal or financial identification documents. The system enables users to edit and update their contact information, banking details for payment processing, and other relevant personal data. Any changes made are securely synchronized with the university's central database, ensuring that records remain accurate and up to date. Additionally, users can upload supporting documents, such as identification cards or bank account verification, directly through the app.",
@@ -73,7 +74,7 @@ const ProjectsSection = () => {
 
   const djNailsFullDescription = {
     title: "DJ Nails - Beauty Services Website",
-    image: image2,
+    image: Image2,
     liveUrl: "https://djnails.netlify.app",
     description: "A website done by me showing the different services that DJ Nails offers and permitting a client to be able to book a rendez-vous.",
     features: [
@@ -88,7 +89,7 @@ const ProjectsSection = () => {
 
   const medAssistFullDescription = {
     title: "MED ASSIST - Medical Health Companion",
-    image: image5,
+    image: Image5,
     liveUrl: "https://medassit.onrender.com",
     isTestVersion: true,
     description: "MED ASSIST is a comprehensive AI-powered medical platform that enhances patient care through multilingual feedback capture, conversational AI assistance, and intelligent blood bank management for healthcare facilities.",
@@ -141,7 +142,7 @@ const ProjectsSection = () => {
     {
       title: 'TAMO SECURES - GBV',
       description: 'A comprehensive Gender-Based Violence prevention system with mobile app, panic button, community support, and real-time location tracking for victim safety and support.',
-      image: image1,
+      image: Image1,
       liveUrl: '#',
       githubUrl: '#',
       featured: true,
@@ -151,7 +152,7 @@ const ProjectsSection = () => {
     {
       title: 'EDEN - Doctor Companion',
       description: 'EDEN mobile app for PDMD (Plateforme de Diagnostic Médical de Douala) - Doctor partnership management and commission tracking system.',
-      image: image3,
+      image: Image3,
       liveUrl: '#',
       githubUrl: '#',
       featured: true,
@@ -161,7 +162,7 @@ const ProjectsSection = () => {
     {
       title: 'GALIO - Lecturer Companion',
       description: 'A mobile-based institutional activity follow-up system for teachers and administrative staff to manage academic responsibilities and course selections.',
-      image: image4,
+      image: Image4,
       liveUrl: '#',
       githubUrl: '#',
       featured: false,
@@ -171,7 +172,7 @@ const ProjectsSection = () => {
     {
       title: 'DJ NailS website ',
       description: 'A website showing DJ Nails services and allowing clients to book appointments online.',
-      image: image2,
+      image: Image2,
       liveUrl: 'https://djnails.netlify.app',
       githubUrl: '#',
       featured: false,
@@ -193,7 +194,7 @@ const ProjectsSection = () => {
         {
       title: 'MED ASSIST - Medical Health Companion',
       description: 'AI-powered medical platform with multilingual patient feedback, conversational AI assistance, and intelligent blood bank management.',
-      image: image5,
+      image: Image5,
       liveUrl: 'https://medassit.onrender.com',
       githubUrl: '#',
       featured: false,
