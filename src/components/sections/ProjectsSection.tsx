@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ExternalLink, Star, X, Play } from 'lucide-react';
-import { Image } from 'lucide-react';
 import Image1 from "../../assets/images/tamo_secures.png";
 import Image2 from "../../assets/images/djnails.png";
 import Image3 from "../../assets/images/image0.png";
