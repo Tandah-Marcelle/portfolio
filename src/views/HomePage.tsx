@@ -22,7 +22,7 @@ const HomePage: React.FC = () => {
       <AchievementsSection />
       <CertificatesSection />
       <ReadyToCollaborateSection />
-      <ProfessionalProjectSection />
+      {/* <ProfessionalProjectSection /> */}
       <ContactSection />
     </MainLayout>
   );

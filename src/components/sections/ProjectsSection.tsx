@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink, Star, X, Play } from 'lucide-react';
+import { ExternalLink, Star, X, Play, Palette, Code, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image1 from "../../assets/images/tamo_secures.png";
 import Image2 from "../../assets/images/djnails.png";
 import Image3 from "../../assets/images/image0.png";
@@ -25,6 +25,8 @@ const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectDescription | null>(null);
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
+  const [activeTab, setActiveTab] = useState<'development' | 'graphics'>('development');
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const openModal = (project: ProjectDescription) => {
     setSelectedProject(project);
@@ -44,6 +46,22 @@ const ProjectsSection = () => {
   const closeImagePreview = () => {
     setIsImagePreviewOpen(false);
     setPreviewImage('');
+  };
+
+  // Placeholder graphic design images - replace with your actual images
+  const graphicDesigns = [
+    // Add your 30 graphic design images here
+    // Example: '/src/assets/images/graphics/design1.jpg',
+    // For now, using placeholders
+    ...Array.from({ length: 30 }, (_, i) => `https://picsum.photos/400/300?random=${i + 1}`)
+  ];
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % graphicDesigns.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + graphicDesigns.length) % graphicDesigns.length);
   };
 
   const edenFullDescription = {
@@ -214,7 +232,37 @@ const ProjectsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Tab Navigation */}
+        <div className="flex justify-center mb-8">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-1 border border-white/20">
+            <button
+              onClick={() => setActiveTab('development')}
+              className={`px-6 py-2 rounded-md text-sm font-medium transition-all duration-300 flex items-center space-x-2 ${
+                activeTab === 'development'
+                  ? 'bg-blue-600 text-white shadow-lg'
+                  : 'text-gray-300 hover:text-white'
+              }`}
+            >
+              <Code size={16} />
+              <span>Development</span>
+            </button>
+            {/* <button
+              onClick={() => setActiveTab('graphics')}
+              className={`px-6 py-2 rounded-md text-sm font-medium transition-all duration-300 flex items-center space-x-2 ${
+                activeTab === 'graphics'
+                  ? 'bg-blue-600 text-white shadow-lg'
+                  : 'text-gray-300 hover:text-white'
+              }`}
+            >
+              <Palette size={16} />
+              <span>Graphic Design</span>
+            </button> */}
+          </div>
+        </div>
+
+        {/* Development Projects */}
+        {activeTab === 'development' && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((project, index) => (
             <div key={index} className="group relative">
               <div className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden border border-white/20">
@@ -281,7 +329,77 @@ const ProjectsSection = () => {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        )}
+
+        {/* Graphic Design Gallery */}
+        {activeTab === 'graphics' && (
+          <div className="space-y-8">
+            {/* Featured Design with Navigation */}
+            <div className="relative bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden border border-white/20 max-w-2xl mx-auto">
+              <div className="relative">
+                <img
+                  src={graphicDesigns[currentImageIndex]}
+                  alt={`Graphic Design ${currentImageIndex + 1}`}
+                  className="w-full h-80 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                
+                {/* Navigation Arrows */}
+                <button
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-300"
+                >
+                  <ChevronRight size={20} />
+                </button>
+                
+                {/* Image Counter */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                  {currentImageIndex + 1} / {graphicDesigns.length}
+                </div>
+              </div>
+            </div>
+
+            {/* Thumbnail Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {graphicDesigns.map((design, index) => (
+                <div
+                  key={index}
+                  className={`relative cursor-pointer rounded-lg overflow-hidden transition-all duration-300 ${
+                    index === currentImageIndex
+                      ? 'ring-2 ring-blue-400 scale-105'
+                      : 'hover:scale-105'
+                  }`}
+                  onClick={() => setCurrentImageIndex(index)}
+                >
+                  <img
+                    src={design}
+                    alt={`Design ${index + 1}`}
+                    className="w-full h-24 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-all duration-300"></div>
+                </div>
+              ))}
+            </div>
+
+            {/* View All Button */}
+            <div className="text-center">
+              <button
+                onClick={() => openImagePreview(graphicDesigns[currentImageIndex])}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2 mx-auto"
+              >
+                <ExternalLink size={16} />
+                <span>View Full Size</span>
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* Modal for Project Demos */}
         {isModalOpen && selectedProject && (
