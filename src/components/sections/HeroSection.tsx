@@ -1,11 +1,11 @@
 import { ArrowDown, Linkedin, Mail, Download } from 'lucide-react';
-import Image1 from "../../assets/images/me.png";
+import Image1 from "../../assets/images/me.jpeg";
 
 
 const HeroSection = () => {
   const downloadCV = () => {
     const link = document.createElement('a');
-    link.href = '/src/assets/pdf/CV_TANDAH-DJIMELI-MARCELLE.pdf';
+    link.href = '/assets/pdf/CV_TANDAH-DJIMELI-MARCELLE.pdf';
     link.download = 'CV_TANDAH-DJIMELI-MARCELLE.pdf';
     document.body.appendChild(link);
     link.click();

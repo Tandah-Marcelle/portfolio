@@ -183,11 +183,17 @@
 
 /* Certificates scrolling animation */
 .certificates-scroll {
-  animation: scroll-left 15s linear infinite;
+  animation: scroll-left 18s linear infinite;
 }
 
 .certificates-scroll:hover {
   animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .certificates-scroll {
+    animation: scroll-left 12s linear infinite;
+  }
 }
 
 @keyframes scroll-left {
@@ -195,7 +201,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-33.333%);
   }
 }
 

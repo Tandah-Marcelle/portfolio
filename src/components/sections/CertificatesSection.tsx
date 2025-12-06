@@ -1,49 +1,63 @@
 import { useState } from 'react';
-import { X, Download, FileText, Eye } from 'lucide-react';
+import { X, Download, FileText, Eye, Image as ImageIcon } from 'lucide-react';
+import PythonCertImage from '../../assets/images/Cert python for data science.jpeg';
 
 const CertificatesSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPdf, setSelectedPdf] = useState<{ name: string; path: string } | null>(null);
+  const [selectedPdf, setSelectedPdf] = useState<{ name: string; path: string; type?: string } | null>(null);
 
   const certificates = [
     {
       name: "CV - TANDAH DJIMELI MARCELLE",
-      path: "/src/assets/pdf/CV_TANDAH-DJIMELI-MARCELLE.pdf",
-      displayName: "Professional CV"
+      path: "/assets/pdf/CV_TANDAH-DJIMELI-MARCELLE.pdf",
+      displayName: "Professional CV",
+      type: "pdf"
     },
     {
       name: "Certificate of Completion - Digital Basics & Collaboration",
-      path: "/src/assets/pdf/CertificateOfCompletion_Parcours dapprentissage sur les bases du numerique et sur la collaboration.pdf",
-      displayName: "Digital Collaboration Certificate"
+      path: "/assets/pdf/CertificateOfCompletion_Parcours dapprentissage sur les bases du numerique et sur la collaboration.pdf",
+      displayName: "Digital Collaboration Certificate",
+      type: "pdf"
     },
     {
       name: "Code2Care Certificate",
-      path: "/src/assets/pdf/Code2Care Certificate.pdf",
-      displayName: "Code2Care Datathon"
+      path: "/assets/pdf/Code2Care Certificate.pdf",
+      displayName: "Code2Care Datathon",
+      type: "pdf"
+    },
+    {
+      name: "Python for Data Science",
+      path: PythonCertImage,
+      displayName: "Python for Data Science",
+      type: "image"
     },
     {
       name: "Data Science Module 1",
-      path: "/src/assets/pdf/Data Science MOD1.pdf",
-      displayName: "Data Science Certification"
+      path: "/assets/pdf/Data Science MOD1.pdf",
+      displayName: "Data Science Certification",
+      type: "pdf"
     },
     {
       name: "DevOps Certificate",
-      path: "/src/assets/pdf/DevOps 7238322_cert_3045.pdf",
-      displayName: "DevOps Certification"
+      path: "/assets/pdf/DevOps 7238322_cert_3045.pdf",
+      displayName: "DevOps Certification",
+      type: "pdf"
     },
     {
       name: "Project Management Coursera",
-      path: "/src/assets/pdf/FINAL PM Coursera.pdf",
-      displayName: "Project Management"
+      path: "/assets/pdf/FINAL PM Coursera.pdf",
+      displayName: "Project Management",
+      type: "pdf"
     },
     {
       name: "YALI Certificate",
-      path: "/src/assets/pdf/YALI Cert.pdf",
-      displayName: "YALI Leadership"
+      path: "/assets/pdf/YALI Cert.pdf",
+      displayName: "YALI Leadership",
+      type: "pdf"
     }
   ];
 
-  const openModal = (certificate: { name: string; path: string }) => {
+  const openModal = (certificate: { name: string; path: string; type?: string }) => {
     setSelectedPdf(certificate);
     setIsModalOpen(true);
   };
@@ -62,8 +76,8 @@ const CertificatesSection = () => {
     document.body.removeChild(link);
   };
 
-  // Duplicate certificates for seamless animation
-  const duplicatedCertificates = [...certificates, ...certificates];
+  // Triple certificates for seamless mobile animation
+  const duplicatedCertificates = [...certificates, ...certificates, ...certificates];
 
   return (
     <section className="py-2 bg-gradient-to-r from-blue-600 via-blue-800 to-violet-600 overflow-hidden">
@@ -71,25 +85,30 @@ const CertificatesSection = () => {
 
 
         {/* Animated Certificates Band */}
-        <div className="relative">
-          <div className="certificates-scroll flex space-x-4 py-1">
+        <div className="relative overflow-hidden">
+          <div className="certificates-scroll flex space-x-4 py-1 will-change-transform">
             {duplicatedCertificates.map((certificate, index) => (
               <div
                 key={`${certificate.name}-${index}`}
-                className="flex-shrink-0 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-6 cursor-pointer transition-all duration-300 hover:bg-white/20 hover:scale-105 min-w-[280px]"
+                className="flex-shrink-0 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-4 md:p-6 cursor-pointer transition-all duration-300 hover:bg-white/20 hover:scale-105 w-[240px] md:min-w-[280px]"
                 onClick={() => openModal(certificate)}
               >
-                <div className="flex items-center space-x-4">
-                  <div className="p-3 bg-white/20 rounded-lg">
-                    <FileText className="text-white" size={24} />
+                <div className="flex items-center space-x-3 md:space-x-4">
+                  <div className="p-2 md:p-3 bg-white/20 rounded-lg flex-shrink-0">
+                    {certificate.type === 'image' ? (
+                      <ImageIcon className="text-white" size={20} />
+                    ) : (
+                      <FileText className="text-white" size={20} />
+                    )}
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-white font-semibold text-sm mb-1 line-clamp-2">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-white font-semibold text-xs md:text-sm mb-1 line-clamp-2">
                       {certificate.displayName}
                     </h3>
-                    <div className="flex items-center space-x-2 text-blue-100 text-xs">
-                      <Eye size={14} />
-                      <span>Click to preview</span>
+                    <div className="flex items-center space-x-1 md:space-x-2 text-blue-100 text-xs">
+                      <Eye size={12} />
+                      <span className="hidden sm:inline">Click to preview</span>
+                      <span className="sm:hidden">Preview</span>
                     </div>
                   </div>
                 </div>
@@ -125,13 +144,21 @@ const CertificatesSection = () => {
               </div>
             </div>
 
-            {/* PDF Viewer */}
-            <div className="flex-1 p-6">
-              <iframe
-                src={selectedPdf.path}
-                className="w-full h-[70vh] border border-gray-200 rounded-lg"
-                title={selectedPdf.name}
-              />
+            {/* Content Viewer */}
+            <div className="flex-1 p-6 overflow-auto">
+              {selectedPdf.type === 'image' ? (
+                <img
+                  src={selectedPdf.path}
+                  alt={selectedPdf.name}
+                  className="w-full h-auto rounded-lg"
+                />
+              ) : (
+                <iframe
+                  src={selectedPdf.path}
+                  className="w-full h-[70vh] border border-gray-200 rounded-lg"
+                  title={selectedPdf.name}
+                />
+              )}
             </div>
           </div>
         </div>

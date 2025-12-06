@@ -1,5 +1,5 @@
 import { Heart, Lightbulb, Award, Zap } from 'lucide-react';
-import Image1 from "../../assets/images/me.png";
+import Image1 from "../../assets/images/me3.jpeg";
 
 const AboutSection = () => {
   return (
