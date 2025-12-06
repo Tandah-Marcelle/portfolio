@@ -21,7 +21,7 @@ const AboutSection = () => {
               <img 
                 src={Image1}
                 alt="Sarah Johnson working" 
-                className="relative w-full h-96 object-cover rounded-lg shadow-xl"
+                className="relative w-full h-auto max-h-[500px] object-contain rounded-lg shadow-xl"
               />
             </div>
           </div>
