@@ -3,28 +3,25 @@ import { Calendar, MapPin } from 'lucide-react';
 const ExperienceSection = () => {
   const experiences = [
     {
-      title: 'Junior backend Developer and Graphic Designer',
+      title: 'Junior Backend Developer & Graphic Designer',
       company: 'Innovation Sarl',
-      location: 'Camp Yabassi - Behind Cogeni',
+      location: 'Camp Yabassi, Douala',
       period: '2022 - 2023',
-      description: 'I was called upon to code modules In an event management System and do graphic designs for the enterprise itself and its clients',
-     
+      description: 'Coded critical modules for an event management system and delivered professional graphic designs for the enterprise and its diverse clientele.',
     },
     {
-      title: 'Mobile App Developer',
+      title: 'Mobile App Developer (Group Leader)',
       company: 'Plateforme de Diagnostic Medical de Douala (PDMD)',
       location: 'Sable - Bonamoussadi',
-      period: 'September2024 - January2025',
-      description: 'Developed a Mobile application that could help PDMD Doctors and Partners to see the amount of commisions they have on each of their patients.',
-    
+      period: 'Sept 2024 - Jan 2025',
+      description: 'Led the development of the EDEN mobile application, enabling doctors to track patient referrals and commissions. My leadership efforts in coordinating this project inspired me to pursue professional Project Management training.',
     },
     {
-      title: 'Frontend mobile and Web Developer',
+      title: 'Frontend & Web Developer (Group Leader)',
       company: 'Institut Universitaire de la Cote (IUC)',
-      location: 'Logbessou Douala',
-      period: 'February 2025 - Present',
-      description: 'I had to develop a mobile application which served as a self service tool for collection of lecturers information and which also enabled them get their time tables and task schedules on time, ensuring swift comminication of information between the various departments and their lecturers. Also, I worked on a media tech capable of managing IUC lecturer documents. ',
-      
+      location: 'Logbessou, Douala',
+      period: 'Feb 2025 - Present',
+      description: 'Driving the development of a lecturer self-service tool and an institutional Mediatech for document management. As a group leader, I ensure seamless communication between departments and project success, which led to my formal Project Management Certification.',
     },
   ];
 
@@ -47,13 +44,13 @@ const ExperienceSection = () => {
               {index !== experiences.length - 1 && (
                 <div className="absolute left-8 top-16 w-0.5 h-full bg-gradient-to-b from-primary-600 to-secondary-500"></div>
               )}
-              
+
               <div className="flex items-start mb-12">
                 {/* Timeline dot */}
                 <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-primary-600 to-secondary-500 rounded-full flex items-center justify-center mr-8">
                   <div className="w-8 h-8 bg-white rounded-full"></div>
                 </div>
-                
+
                 {/* Content */}
                 <div className="flex-grow bg-white p-4 rounded shadow-lg card-hover">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-1">
@@ -72,9 +69,9 @@ const ExperienceSection = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-700 mb-4 leading-relaxed text-sm">{exp.description}</p>
-         
+
                 </div>
               </div>
             </div>

@@ -10,7 +10,7 @@ const AboutSection = () => {
             About Me
           </h2>
           <p className="text-sm text-gray-700 leading-relaxed max-w-3xl mx-auto">
-            With over 3 years of experience in mobile and web development, I specialize in creating modern applications using cutting-edge technologies. My passion focuses on building solutions that impacts the community.
+            With over 3 years of experience in mobile and web development, I specialize in creating modern applications with a focus on sustainable social impact. As a certified project management professional and group leader, I bridge the gap between technical execution and community-driven innovation, ensuring that every line of code serves a greater societal purpose.
           </p>
         </div>
 
@@ -18,9 +18,9 @@ const AboutSection = () => {
           <div className="space-y-6">
             <div className="relative">
               <div className="absolute -inset-4  rounded-lg blur opacity-25"></div>
-              <img 
+              <img
                 src={Image1}
-                alt="Sarah Johnson working" 
+                alt="Sarah Johnson working"
                 className="relative w-full h-auto max-h-[500px] object-contain rounded-lg shadow-xl"
               />
             </div>
@@ -39,7 +39,7 @@ const AboutSection = () => {
                 <h3 className="font-bold text-gray-800 mb-2 group-hover:text-white transition-colors duration-300">5+ Competitions</h3>
                 <p className="text-gray-600 text-sm group-hover:text-white transition-colors duration-300">Great experiences</p>
               </div>
-              
+
               <div className="bg-white p-6 rounded-lg border border-gray-200 transition-all duration-300 hover:bg-blue-700 group">
                 <Lightbulb className="text-blue-600 mb-3 group-hover:text-white transition-colors duration-300" size={24} />
                 <h3 className="font-bold text-gray-800 mb-2 group-hover:text-white transition-colors duration-300">Lifelong Learner</h3>
