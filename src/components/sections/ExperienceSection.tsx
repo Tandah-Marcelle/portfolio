@@ -2,6 +2,33 @@ import { Calendar, MapPin } from 'lucide-react';
 
 const ExperienceSection = () => {
   const experiences = [
+
+     {
+      title: 'Software Developer(full-time employee)',
+      company: 'Institut Universitaire de la Cote (IUC)',
+      location: 'Logbessou, Douala',
+      period: 'August 2025 - Present',
+      description: 'Driving the development of a lecturer self-service tool and an institutional Mediatech for document management. As a group leader, I ensure seamless communication between departments and project success, which led to my formal Project Management Certification.',
+    },
+
+    {
+      title: 'Software Developer(Intern)',
+      company: 'Institut Universitaire de la Cote (IUC)',
+      location: 'Logbessou, Douala',
+      period: 'Feb 2025 - July 2025',
+      description: 'Driving the development of a lecturer self-service tool and an institutional Mediatech for document management. As a group leader, I ensure seamless communication between departments and project success, which led to my formal Project Management Certification.',
+    },
+
+
+{
+      title: 'Software Developer (Intern)',
+      company: 'Institut Universitaire de la Cote (IUC)',
+      location: 'Logbessou, Douala',
+      period: 'Sept 2024 - Jan 2025',
+      description: 'Led the development of the EDEN mobile application, enabling doctors to track patient referrals and commissions. My leadership efforts in coordinating this project inspired me to pursue professional Project Management training.',
+    },
+
+
     {
       title: 'Junior Backend Developer & Graphic Designer',
       company: 'Innovation Sarl',
@@ -9,20 +36,9 @@ const ExperienceSection = () => {
       period: '2022 - 2023',
       description: 'Coded critical modules for an event management system and delivered professional graphic designs for the enterprise and its diverse clientele.',
     },
-    {
-      title: 'Mobile App Developer (Group Leader)',
-      company: 'Plateforme de Diagnostic Medical de Douala (PDMD)',
-      location: 'Sable - Bonamoussadi',
-      period: 'Sept 2024 - Jan 2025',
-      description: 'Led the development of the EDEN mobile application, enabling doctors to track patient referrals and commissions. My leadership efforts in coordinating this project inspired me to pursue professional Project Management training.',
-    },
-    {
-      title: 'Frontend & Web Developer (Group Leader)',
-      company: 'Institut Universitaire de la Cote (IUC)',
-      location: 'Logbessou, Douala',
-      period: 'Feb 2025 - Present',
-      description: 'Driving the development of a lecturer self-service tool and an institutional Mediatech for document management. As a group leader, I ensure seamless communication between departments and project success, which led to my formal Project Management Certification.',
-    },
+    
+
+
   ];
 
   return (
