@@ -183,26 +183,18 @@
 
 /* Certificates scrolling animation */
 .certificates-scroll {
-  animation: scroll-left 18s linear infinite;
+  display: flex;
+  width: max-content;
+  animation: scroll-left 25s linear infinite;
 }
 
 .certificates-scroll:hover {
   animation-play-state: paused;
 }
 
-@media (max-width: 768px) {
-  .certificates-scroll {
-    animation: scroll-left 12s linear infinite;
-  }
-}
-
 @keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-33.333%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
 }
 
 /* Utility classes for text truncation */
