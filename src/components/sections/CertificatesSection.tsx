@@ -32,8 +32,8 @@ const CertificatesSection = () => {
       type: "image"
     },
     {
-      name: "Data Science Module 1",
-      path: "/assets/pdf/Data Science MOD1.pdf",
+      name: "IBM Data Science Certification",
+      path: "/assets/pdf/IBM Data Science Certification.pdf",
       displayName: "Data Science Certification",
       type: "pdf"
     },
@@ -121,10 +121,10 @@ const CertificatesSection = () => {
       {/* PDF Preview Modal */}
       {isModalOpen && selectedPdf && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-800 truncate">
+            <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 truncate">
                 {selectedPdf.name}
               </h3>
               <div className="flex items-center space-x-3">
@@ -137,7 +137,7 @@ const CertificatesSection = () => {
                 </button>
                 <button
                   onClick={closeModal}
-                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors text-gray-700 dark:text-gray-200"
                 >
                   <X size={20} />
                 </button>

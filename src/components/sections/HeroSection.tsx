@@ -97,10 +97,10 @@ const HeroSection = () => {
             <a href="#contact" className="border-2 border-white/30 text-white px-5 py-2 rounded-full font-medium transition-all duration-300 hover:bg-white/10 text-sm">
               Get In Touch
             </a>
-            <a href="#professional-project" className="border-2 border-blue-400/50 text-blue-300 px-5 py-2 rounded-full font-medium transition-all duration-300 hover:bg-blue-400/10 flex items-center text-sm">
+            {/* <a href="#professional-project" className="border-2 border-blue-400/50 text-blue-300 px-5 py-2 rounded-full font-medium transition-all duration-300 hover:bg-blue-400/10 flex items-center text-sm">
               <Download size={18} className="mr-2" />
               Professional Project
-            </a>
+            </a> */}
           </div>
 
           <div className="flex justify-center space-x-6 mb-16">
