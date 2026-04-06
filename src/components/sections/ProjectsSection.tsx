@@ -188,7 +188,7 @@ const ProjectsSection = () => {
       title: 'Agrobuild',
       description: 'Open-source platform for sustainable agricultural machinery and local manufacturing.',
       image: Image6,
-      liveUrl: 'https://agrobuild.netlify.app',
+      liveUrl: 'https://agrobuild.djimstech.com',
       githubUrl: '#',
       featured: true,
       hasDemo: true,
