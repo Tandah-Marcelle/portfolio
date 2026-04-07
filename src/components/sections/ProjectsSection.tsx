@@ -186,7 +186,7 @@ const ProjectsSection = () => {
   const projects = [
     {
       title: 'Agrobuild',
-      description: 'Open-source platform for sustainable agricultural machinery and local manufacturing.',
+      description: 'Open-source platform for sustainable agricultural machinery and local manufacturing',
       image: Image6,
       liveUrl: 'https://agrobuild.djimstech.com',
       githubUrl: '#',
