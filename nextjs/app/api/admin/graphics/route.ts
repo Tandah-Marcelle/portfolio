@@ -1,0 +1,25 @@
+import { NextResponse } from "next/server";
+import { db } from "@/lib/db";
+import { requireAdmin, str } from "@/lib/route-helpers";
+import { uploadImage } from "@/lib/cloudinary";
+
+export const dynamic = "force-dynamic";
+
+export async function POST(req: Request) {
+  const denied = await requireAdmin();
+  if (denied) return denied;
+  const form = await req.formData();
+  const file = form.get("image");
+  if (!(file instanceof File) || file.size === 0) {
+    return NextResponse.json({ message: "No image file provided" }, { status: 400 });
+  }
+  const { secure_url } = await uploadImage(file);
+  const graphic = await db.graphicDesign.create({
+    data: {
+      imageUrl: secure_url,
+      title: str(form.get("title")) ?? "Untitled Design",
+      category: str(form.get("category")) ?? "Promotional Flyers",
+    },
+  });
+  return NextResponse.json(graphic, { status: 201 });
+}

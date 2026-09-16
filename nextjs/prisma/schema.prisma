@@ -1,0 +1,164 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model HeroInfo {
+  id          String   @id @default("hero-info-id")
+  title       String
+  subtitle    String
+  description String
+  cvPath      String?
+  cvPath2     String?
+  avatarUrl   String?
+  name        String?
+  roleBadge   String?
+  chipOne     String?
+  chipTwo     String?
+  linkedinUrl String?
+  streamTitle String?
+  streamHint  String?
+  updatedAt   DateTime @updatedAt
+}
+
+model AboutInfo {
+  id                   String   @id @default("about-info-id")
+  description          String
+  secondaryDescription String?
+  imageUrl             String?
+  badgeText            String?
+  titlePrefix          String?
+  titleAccent          String?
+  quote                String?
+  pillars              Json     @default("[]")
+  motionKicker         String?
+  motionTitle          String?
+  motionBadge          String?
+  interpretTitle       String?
+  interpretText        String?
+  updatedAt            DateTime @updatedAt
+}
+
+model Experience {
+  id          String   @id @default(uuid())
+  title       String
+  company     String
+  location    String
+  period      String
+  description String
+  logoUrl     String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Project {
+  id             String   @id @default(uuid())
+  title          String
+  description    String
+  category       String   @default("Web Development")
+  image          String?
+  images         Json     @default("[]")
+  videoPath      String?
+  isPrivateApp   Boolean  @default(false)
+  isTestVersion  Boolean  @default(false)
+  liveUrl        String?  @default("#")
+  githubUrl      String?  @default("#")
+  featured       Boolean  @default(false)
+  hasDemo        Boolean  @default(false)
+  stars          Int      @default(0)
+  summary        String
+  background     String
+  skillSet       Json     // string[]
+  contribution   String
+  features       Json     // string[] or Array<{category: string; items: string[]}>
+  order          Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model GraphicDesign {
+  id          String   @id @default(uuid())
+  imageUrl    String
+  title       String?  @default("Untitled Design")
+  category    String?  @default("Promotional Flyers")
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Skill {
+  id        String   @id @default(uuid())
+  category  String
+  name      String
+  level     Int      @default(80)
+  color     String?  @default("from-secondary-500 to-secondary-700")
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Achievement {
+  id           String   @id @default(uuid())
+  title        String
+  organization String
+  date         String
+  location     String?
+  description  String
+  category     String?
+  imageUrl     String?
+  images       Json     @default("[]")
+  order        Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Certificate {
+  id          String   @id @default(uuid())
+  name        String
+  displayName String
+  path        String
+  type        String   @default("pdf")
+  verified    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ContactInfo {
+  id        String   @id @default("contact-info-id")
+  email     String?
+  phone     String?
+  location  String?
+  github    String?
+  linkedin  String?
+  whatsapp  String?
+  updatedAt DateTime @updatedAt
+}
+
+model Volunteering {
+  id           String   @id @default(uuid())
+  role         String
+  organization String
+  period       String
+  location     String?
+  description  String
+  logoUrl      String?
+  images       Json     // string[] storing Cloudinary image URLs
+  order        Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
