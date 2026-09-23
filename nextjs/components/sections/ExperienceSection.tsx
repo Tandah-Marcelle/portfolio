@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentType } from "react";
+import Reveal from "../ui/Reveal";
 import { Calendar, MapPin, Briefcase, Triangle, CheckCircle2, ArrowRight } from "lucide-react";
 
 interface Experience {
@@ -33,7 +34,7 @@ interface CardExperience {
 
 // Custom Vector SVG Logo for IUC (Institut Universitaire de la Côte)
 const IucLogo = () => (
-  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#161C2A] to-[#0A0D14] border border-white/20 flex items-center justify-center shadow-md shrink-0">
+  <div className="w-10 h-10 rounded-xl bg-[#161C2A] border border-white/20 flex items-center justify-center shadow-md shrink-0">
     <svg viewBox="0 0 100 100" className="w-6 h-6 text-white fill-current">
       <path d="M50 10 L85 30 L85 70 L50 90 L15 70 L15 30 Z" fill="none" stroke="currentColor" strokeWidth="6" />
       <path d="M50 25 L70 38 L70 62 L50 75 L30 62 L30 38 Z" fill="#FF6B00" opacity="0.8" />
@@ -46,7 +47,7 @@ const IucLogo = () => (
 
 // Custom Vector SVG Logo for Innovation Sarl
 const InnovationLogo = () => (
-  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#161C2A] to-[#0A0D14] border border-white/20 flex items-center justify-center shadow-md shrink-0">
+  <div className="w-10 h-10 rounded-xl bg-[#161C2A] border border-white/20 flex items-center justify-center shadow-md shrink-0">
     <svg viewBox="0 0 100 100" className="w-6 h-6 text-white">
       <circle cx="50" cy="50" r="38" fill="none" stroke="#00C853" strokeWidth="6" />
       <path d="M35 30 L65 50 L35 70 Z" fill="#FF6B00" />
@@ -57,7 +58,7 @@ const InnovationLogo = () => (
 
 // Fallback logo for companies without a custom vector logo
 const DefaultLogo = () => (
-  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#161C2A] to-[#0A0D14] border border-white/20 flex items-center justify-center shadow-md shrink-0">
+  <div className="w-10 h-10 rounded-xl bg-[#161C2A] border border-white/20 flex items-center justify-center shadow-md shrink-0">
     <Briefcase className="w-5 h-5 text-[#FF6B00]" />
   </div>
 );
@@ -175,18 +176,13 @@ const ExperienceSection = ({ data }: ExperienceSectionProps) => {
   return (
     <section id="experience" className="py-12 relative overflow-hidden bg-[#07090E]">
       {/* Background Decorative Ambient Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-gradient-to-r from-[#FF6B00]/10 via-transparent to-[#00C853]/10 rounded-full filter blur-[180px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-[#FF6B00]/10 rounded-full filter blur-[180px] pointer-events-none" />
 
       {/* FULL SCREEN WIDTH CONTAINER (Edge-to-Edge Utilization) */}
       <div className="w-full max-w-[1850px] mx-auto px-4 md:px-6 lg:px-8 relative z-10">
 
         {/* Section Header */}
         <div className="text-center mb-16 space-y-4 max-w-3xl mx-auto">
-          <div className="inline-flex items-center space-x-2.5 badge-orange text-xs md:text-sm px-4 py-1.5">
-            <Briefcase className="w-4 h-4 text-[#FF6B00]" />
-            <span className="font-semibold uppercase tracking-wider font-mono">Horizontal Career Timeline</span>
-          </div>
-
           <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase">
             WORK <span className="text-gradient-orange">EXPERIENCE</span>
           </h2>
@@ -200,9 +196,10 @@ const ExperienceSection = ({ data }: ExperienceSectionProps) => {
         <div className="relative pt-6 pb-12">
 
           {/* Central Horizontal Axis Line (Desktop Edge-to-Edge Spine) */}
-          <div className="hidden lg:block absolute left-4 right-4 top-1/2 -translate-y-1/2 h-0.5 bg-gradient-to-r from-[#FF6B00]/40 via-white/30 to-[#00C853]/40 z-10" />
+          <div className="hidden lg:block absolute left-4 right-4 top-1/2 -translate-y-1/2 h-0.5 bg-white/20 z-10" />
 
           {/* DYNAMIC GRID (adapts to number of backend entries) */}
+          <Reveal>
           <div className={`grid grid-cols-1 md:grid-cols-2 ${gridCols} gap-6 lg:gap-8 items-stretch relative z-20`}>
             {experiences.map((exp, index) => {
               const LogoComp = exp.logo;
@@ -223,7 +220,7 @@ const ExperienceSection = ({ data }: ExperienceSectionProps) => {
               return (
                 <div
                   key={index}
-                  className={`flex flex-col justify-between glass-panel p-6 md:p-7 rounded-3xl border border-white/15 bg-[#0F131D]/95 transition-all duration-300 shadow-2xl group hover:-translate-y-2 relative ${offsetClass} ${borderAccent}`}
+                  className={`flex flex-col justify-between glass-panel p-6 md:p-7 rounded-xl border border-white/15 bg-[#0F131D]/95 transition-all duration-300 shadow-2xl group hover:-translate-y-2 relative ${offsetClass} ${borderAccent}`}
                 >
                   {/* Central Triangle Node Indicator (Sitting on top of card) */}
                   <div className="hidden lg:flex absolute -top-4 left-1/2 -translate-x-1/2 z-30">
@@ -308,6 +305,7 @@ const ExperienceSection = ({ data }: ExperienceSectionProps) => {
               );
             })}
           </div>
+          </Reveal>
 
         </div>
 

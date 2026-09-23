@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle, MessageSquare, Sparkles } from "lucide-react";
+import Reveal from "../ui/Reveal";
+import { Mail, Phone, MapPin, Send, CheckCircle, Sparkles } from "lucide-react";
 import type { BackendContact } from "../../lib/types";
 
 interface ContactSectionProps {
@@ -44,11 +45,6 @@ const ContactSection = ({ data }: ContactSectionProps) => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 space-y-3">
-          <div className="inline-flex items-center space-x-2 badge-orange">
-            <MessageSquare className="w-4 h-4 text-[#FF6B00]" />
-            <span>Direct Channels</span>
-          </div>
-
           <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight uppercase">
             Get In <span className="text-gradient-emerald">Touch</span>
           </h2>
@@ -58,6 +54,7 @@ const ContactSection = ({ data }: ContactSectionProps) => {
           </p>
         </div>
 
+        <Reveal>
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Contact Details */}
           <div className="space-y-8 flex flex-col justify-between">
@@ -71,7 +68,7 @@ const ContactSection = ({ data }: ContactSectionProps) => {
             </div>
 
             <div className="space-y-6">
-              <div className="flex items-center space-x-4 glass-panel p-4 rounded-2xl border border-white/10 group hover:border-[#FF6B00]/40 transition-colors">
+              <div className="flex items-center space-x-4 glass-panel p-4 rounded-lg border border-white/10 group hover:border-[#FF6B00]/40 transition-colors">
                 <div className="w-12 h-12 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/30 flex items-center justify-center flex-shrink-0">
                   <Mail className="text-[#FF6B00]" size={22} />
                 </div>
@@ -83,7 +80,7 @@ const ContactSection = ({ data }: ContactSectionProps) => {
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4 glass-panel p-4 rounded-2xl border border-white/10 group hover:border-[#00C853]/40 transition-colors">
+              <div className="flex items-center space-x-4 glass-panel p-4 rounded-lg border border-white/10 group hover:border-[#00C853]/40 transition-colors">
                 <div className="w-12 h-12 rounded-xl bg-[#00C853]/10 border border-[#00C853]/30 flex items-center justify-center flex-shrink-0">
                   <Phone className="text-[#00C853]" size={22} />
                 </div>
@@ -93,7 +90,7 @@ const ContactSection = ({ data }: ContactSectionProps) => {
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4 glass-panel p-4 rounded-2xl border border-white/10 group hover:border-[#FF6B00]/40 transition-colors">
+              <div className="flex items-center space-x-4 glass-panel p-4 rounded-lg border border-white/10 group hover:border-[#FF6B00]/40 transition-colors">
                 <div className="w-12 h-12 rounded-xl bg-[#FF6B00]/10 border border-[#FF6B00]/30 flex items-center justify-center flex-shrink-0">
                   <MapPin className="text-[#FF6B00]" size={22} />
                 </div>
@@ -111,9 +108,9 @@ const ContactSection = ({ data }: ContactSectionProps) => {
           </div>
 
           {/* Form */}
-          <div className="glass-card p-8 md:p-10 rounded-3xl border border-white/10 relative">
+          <div className="glass-card p-8 md:p-10 rounded-xl border border-white/10 relative">
             {showSuccess && (
-              <div className="mb-6 p-4 bg-[#00C853]/10 border border-[#00C853]/40 rounded-2xl flex items-center space-x-3 text-[#00C853]">
+              <div className="mb-6 p-4 bg-[#00C853]/10 border border-[#00C853]/40 rounded-lg flex items-center space-x-3 text-[#00C853]">
                 <CheckCircle size={20} className="shrink-0" />
                 <div className="text-xs">
                   <h4 className="font-bold uppercase tracking-wider">Message Transmitted!</h4>
@@ -209,6 +206,7 @@ const ContactSection = ({ data }: ContactSectionProps) => {
             </form>
           </div>
         </div>
+        </Reveal>
       </div>
     </section>
   );

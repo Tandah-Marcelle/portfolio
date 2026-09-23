@@ -810,12 +810,13 @@ const AdminDashboard: React.FC = () => {
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div>
-                                                <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Display Name</label>
+                                                <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Display Name (big headline)</label>
                                                 <input
                                                     type="text"
-                                                    value={hero.title}
-                                                    onChange={(e) => setHero({ ...hero, title: e.target.value })}
+                                                    value={hero.name || ''}
+                                                    onChange={(e) => setHero({ ...hero, name: e.target.value })}
                                                     required
+                                                    placeholder="Tandah Djimeli Marcelle"
                                                     className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-secondary-500 text-sm"
                                                 />
                                             </div>
@@ -843,16 +844,6 @@ const AdminDashboard: React.FC = () => {
                                         </div>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div>
-                                                <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Full Name (big headline)</label>
-                                                <input
-                                                    type="text"
-                                                    value={hero.name || ''}
-                                                    onChange={(e) => setHero({ ...hero, name: e.target.value })}
-                                                    placeholder="Tandah Djimeli Marcelle"
-                                                    className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-secondary-500 text-sm"
-                                                />
-                                            </div>
                                             <div>
                                                 <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Role Badge (status pill)</label>
                                                 <input

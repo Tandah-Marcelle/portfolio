@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { HeartHandshake, Calendar, MapPin, ChevronLeft, ChevronRight, Sparkles, X, Maximize2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLockBody } from "../ui/useLockBody";
+import Reveal from "../ui/Reveal";
 import type { BackendVolunteering } from "../../lib/types";
 
 interface VolunteeringSectionProps {
@@ -24,7 +25,7 @@ const ImageSlider = ({ images, title, onExpand }: { images: string[]; title: str
     if (!images || images.length === 0) return null;
 
     return (
-        <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-white/10 mb-6 bg-[#0B0F17] group">
+        <div className="relative w-full aspect-[16/9] rounded-lg overflow-hidden border border-white/10 mb-6 bg-[#0B0F17] group">
             <AnimatePresence mode="wait">
                 <motion.img
                     key={currentIndex}
@@ -40,7 +41,7 @@ const ImageSlider = ({ images, title, onExpand }: { images: string[]; title: str
             </AnimatePresence>
 
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-black/30 pointer-events-none" />
 
             {onExpand && (
                 <div className="absolute top-3 left-3 px-2.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white/80 flex items-center gap-1.5 text-[10px] font-mono opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
@@ -139,16 +140,11 @@ const VolunteeringSection = ({ data }: VolunteeringSectionProps) => {
     return (
         <section id="volunteering" className="py-12 relative overflow-hidden bg-[#07090E]">
             {/* Background Decorative Ambient Radial Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-gradient-to-r from-[#00C853]/10 via-transparent to-[#FF6B00]/10 rounded-full filter blur-[150px] pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-[#00C853]/10 rounded-full filter blur-[150px] pointer-events-none" />
 
             <div className="container mx-auto px-6 relative z-10">
                 {/* Section Header */}
                 <div className="text-center mb-16 space-y-4 max-w-3xl mx-auto">
-                    <div className="inline-flex items-center space-x-2 badge-emerald px-4 py-1.5">
-                        <HeartHandshake className="w-4 h-4 text-[#00C853]" />
-                        <span className="font-semibold uppercase tracking-wider">Social Impact & Mentorship</span>
-                    </div>
-
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight uppercase">
                         COMMUNITY & <span className="text-gradient-orange">VOLUNTEERING</span>
                     </h2>
@@ -159,11 +155,12 @@ const VolunteeringSection = ({ data }: VolunteeringSectionProps) => {
                 </div>
 
                 {/* Cards Grid */}
+                <Reveal>
                 <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {items.map((item) => (
                         <div
                             key={item.id}
-                            className="glass-card p-8 rounded-3xl border border-white/10 hover:border-[#00C853]/40 transition-all duration-300 flex flex-col justify-between group"
+                            className="glass-card p-8 rounded-xl border border-white/10 hover:border-[#00C853]/40 transition-all duration-300 flex flex-col justify-between group"
                         >
                             <div>
                                 {/* Header Badge */}
@@ -225,6 +222,7 @@ const VolunteeringSection = ({ data }: VolunteeringSectionProps) => {
                         </div>
                     ))}
                 </div>
+                </Reveal>
             </div>
 
             {/* Fullscreen Lightbox */}
@@ -268,7 +266,7 @@ const VolunteeringSection = ({ data }: VolunteeringSectionProps) => {
                         src={lightbox.images[lightbox.index]}
                         alt={`${lightbox.title} expanded view`}
                         onClick={(e) => e.stopPropagation()}
-                        className="max-w-full max-h-full object-contain rounded-2xl border border-white/15 shadow-2xl"
+                        className="max-w-full max-h-full object-contain rounded-lg border border-white/15 shadow-2xl"
                     />
                 </div>
             )}

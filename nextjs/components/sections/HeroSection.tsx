@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useLockBody } from "../ui/useLockBody";
+import Reveal from "../ui/Reveal";
 import { ArrowRight, Download, Linkedin, Github, FileText, Image as ImageIcon, Eye, X, Award, CheckCircle2, Code2, Sparkles, Cpu, ShieldCheck } from "lucide-react";
 import type { BackendHero, BackendCertificate } from "@/lib/types";
 
@@ -24,7 +25,6 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
   useLockBody(isModalOpen);
 
   const name = data?.name || "Tandah Djimeli Marcelle";
-  const title = data?.title || "Full Stack Developer & Tech for Good Lead";
   const bio =
     data?.subtitle ||
     "Full Stack Software Developer & Group Leader specializing in institutional applications (Mediatech, Lecturer Tools) and impact-driven solutions for gender-based violence prevention and AI healthcare.";
@@ -124,6 +124,7 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
       <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-[#00C853]/10 rounded-full filter blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
+        <Reveal>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* LEFT COLUMN: Large Prominent me.jpeg Portrait with Floating Motion Micro-Illustrations */}
@@ -141,21 +142,21 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
               {/* Prominent Large Portrait Showcase Frame */}
               <div className="relative shrink-0 group">
                 {/* Ambient Glowing Gradient Halo */}
-                <div className="absolute -inset-2 bg-gradient-to-tr from-[#FF6B00] via-[#FF8038] to-[#00C853] rounded-3xl blur-xl opacity-80 group-hover:opacity-100 transition-opacity duration-500 animate-pulse-slow" />
+                <div className="absolute -inset-2 bg-[#FF6B00] rounded-xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
 
                 {/* Main Large Portrait Image Container */}
-                <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-3xl overflow-hidden border-2 border-white/20 shadow-2xl bg-[#07090E]">
+                <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-xl overflow-hidden border-2 border-white/20 shadow-2xl bg-[#07090E]">
                   <img
                     src={avatarUrl}
                     alt={name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  {/* Subtle Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#07090E]/60 via-transparent to-transparent pointer-events-none" />
+                  {/* Subtle Overlay */}
+                  <div className="absolute inset-0 bg-black/20 pointer-events-none" />
                 </div>
 
                 {/* Floating Motion Micro-Illustration #1 (Top Right) */}
-                <div className="absolute -top-4 -right-4 bg-[#0F131D]/90 backdrop-blur-md border border-[#FF6B00]/40 px-3.5 py-2 rounded-2xl flex items-center space-x-2 shadow-xl animate-float">
+                <div className="absolute -top-4 -right-4 bg-[#0F131D]/90 backdrop-blur-md border border-[#FF6B00]/40 px-3.5 py-2 rounded-lg flex items-center space-x-2 shadow-xl animate-float">
                   <div className="p-1.5 bg-[#FF6B00]/20 rounded-xl text-[#FF6B00]">
                     <Code2 size={16} />
                   </div>
@@ -163,7 +164,7 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
                 </div>
 
                 {/* Floating Motion Micro-Illustration #2 (Bottom Left) */}
-                <div className="absolute -bottom-4 -left-4 bg-[#0F131D]/90 backdrop-blur-md border border-[#00C853]/40 px-3.5 py-2 rounded-2xl flex items-center space-x-2 shadow-xl animate-bounce-gentle">
+                <div className="absolute -bottom-4 -left-4 bg-[#0F131D]/90 backdrop-blur-md border border-[#00C853]/40 px-3.5 py-2 rounded-lg flex items-center space-x-2 shadow-xl animate-bounce-gentle">
                   <div className="p-1.5 bg-[#00C853]/20 rounded-xl text-[#00C853]">
                     <Sparkles size={16} />
                   </div>
@@ -176,7 +177,7 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
                 </div>
               </div>
 
-              {/* Name Headline & Subtitle */}
+              {/* Name Headline */}
               <div className="space-y-2 text-center md:text-left self-center">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
                   {name.split(" ")[0]}{" "}
@@ -184,10 +185,6 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
                     {name.split(" ").slice(1).join(" ")}
                   </span>
                 </h1>
-                <p className="text-sm md:text-base font-bold text-slate-200 uppercase tracking-widest flex items-center justify-center md:justify-start gap-2 pt-1">
-                  <span className="w-2.5 h-2.5 bg-[#FF6B00] rounded-full animate-pulse" />
-                  <span>{title}</span>
-                </p>
               </div>
 
             </div>
@@ -211,23 +208,11 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
                 href={cvPath}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2.5 bg-[#07090E] border-2 border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-2xl text-sm md:text-base font-bold uppercase tracking-wider transition-all duration-300 hover:scale-[1.02] shadow-xl"
+                className="inline-flex items-center space-x-2.5 bg-[#07090E] border-2 border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-lg text-sm md:text-base font-bold uppercase tracking-wider transition-all duration-300 hover:scale-[1.02] shadow-xl"
               >
                 <Download size={18} />
                 <span>Download CV</span>
               </a>
-
-              {cvPath2 && (
-                <a
-                  href={cvPath2}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2.5 bg-transparent border-2 border-[#00C853]/50 hover:border-[#00C853] text-white px-8 py-4 rounded-2xl text-sm md:text-base font-bold uppercase tracking-wider transition-all duration-300 hover:scale-[1.02] shadow-xl"
-                >
-                  <Download size={18} />
-                  <span>Alternate CV</span>
-                </a>
-              )}
 
               {/* Social Networks */}
               <div className="flex items-center space-x-3 sm:ml-auto">
@@ -235,7 +220,7 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
                   href={linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 bg-[#0F131D] border border-white/15 hover:border-[#FF6B00] rounded-2xl text-slate-300 hover:text-[#FF6B00] transition-colors shadow-lg"
+                  className="p-4 bg-[#0F131D] border border-white/15 hover:border-[#FF6B00] rounded-lg text-slate-300 hover:text-[#FF6B00] transition-colors shadow-lg"
                   title="LinkedIn"
                 >
                   <Linkedin size={20} />
@@ -244,7 +229,7 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
                   href={githubUrl || "https://github.com/Tandah-Marcelle"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 bg-[#0F131D] border border-white/15 hover:border-[#00C853] rounded-2xl text-slate-300 hover:text-[#00C853] transition-colors shadow-lg"
+                  className="p-4 bg-[#0F131D] border border-white/15 hover:border-[#00C853] rounded-lg text-slate-300 hover:text-[#00C853] transition-colors shadow-lg"
                   title="GitHub"
                 >
                   <Github size={20} />
@@ -265,13 +250,9 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
               <span className="text-[11px] font-mono text-slate-400">{streamHint}</span>
             </div>
 
-            {/* 3D Angled Container */}
-            <div className="relative h-[480px] md:h-[540px] overflow-hidden rounded-3xl border border-white/10 bg-[#07090E]/80 backdrop-blur-md p-4 card-3d-tilt shadow-2xl">
+              {/* 3D Angled Container */}
+              <div className="relative h-[480px] md:h-[540px] overflow-hidden rounded-xl border border-white/10 bg-[#07090E]/80 backdrop-blur-md p-4 card-3d-tilt shadow-2xl">
               
-              {/* Top & Bottom Fade Gradients */}
-              <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-[#07090E] to-transparent z-10 pointer-events-none stream-fade-top" />
-              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#07090E] to-transparent z-10 pointer-events-none stream-fade-bottom" />
-
               <div className="grid grid-cols-2 gap-4 h-full">
                 
                 {/* Column 1: Marquee Up */}
@@ -280,7 +261,7 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
                     <div
                       key={`col1-${cert.name}-${idx}`}
                       onClick={() => openModal(cert)}
-                      className="glass-card p-4 rounded-2xl border border-white/10 hover:border-[#FF6B00] cursor-pointer transition-all duration-300 group bg-[#0F131D]/90"
+                      className="glass-card p-4 rounded-lg border border-white/10 hover:border-[#FF6B00] cursor-pointer transition-all duration-300 group bg-[#0F131D]/90"
                     >
                       <div className="flex items-center space-x-3 mb-2">
                         <div className="p-2 bg-[#FF6B00]/10 rounded-xl text-[#FF6B00] border border-[#FF6B00]/30 group-hover:scale-110 transition-transform">
@@ -307,7 +288,7 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
                     <div
                       key={`col2-${cert.name}-${idx}`}
                       onClick={() => openModal(cert)}
-                      className="glass-card p-4 rounded-2xl border border-white/10 hover:border-[#00C853] cursor-pointer transition-all duration-300 group bg-[#0F131D]/90"
+                      className="glass-card p-4 rounded-lg border border-white/10 hover:border-[#00C853] cursor-pointer transition-all duration-300 group bg-[#0F131D]/90"
                     >
                       <div className="flex items-center space-x-3 mb-2">
                         <div className="p-2 bg-[#00C853]/10 rounded-xl text-[#00C853] border border-[#00C853]/30 group-hover:scale-110 transition-transform">
@@ -333,12 +314,14 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
           </div>
 
         </div>
+
+        </Reveal>
       </div>
 
       {/* PDF / Image Preview Drawer Modal */}
       {isModalOpen && selectedPdf && (
         <div className="fixed inset-0 bg-black/90 backdrop-blur-xl flex items-center justify-center z-[80] p-4 animate-fade-in">
-          <div className="bg-[#0F131D] border border-white/15 rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden text-white">
+          <div className="bg-[#0F131D] border border-white/15 rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden text-white">
             <div className="flex items-center justify-between p-6 border-b border-white/10">
               <h3 className="text-base font-bold text-white truncate pr-4">
                 {selectedPdf.name}
@@ -364,12 +347,12 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
                 <img
                   src={selectedPdf.path}
                   alt={selectedPdf.name}
-                  className="w-full h-auto rounded-2xl max-h-[70vh] object-contain mx-auto"
+                  className="w-full h-auto rounded-lg max-h-[70vh] object-contain mx-auto"
                 />
               ) : (
                 <iframe
                   src={selectedPdf.path}
-                  className="w-full h-[70vh] border border-white/10 rounded-2xl bg-white"
+                  className="w-full h-[70vh] border border-white/10 rounded-lg bg-white"
                   title={selectedPdf.name}
                 />
               )}

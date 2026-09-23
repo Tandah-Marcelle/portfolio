@@ -45,7 +45,7 @@ const LoginPage: React.FC = () => {
             <div className="absolute top-20 left-10 w-72 h-72 bg-secondary-600 rounded-full mix-blend-multiply filter blur-2xl opacity-20"></div>
             <div className="absolute bottom-20 right-10 w-72 h-72 bg-primary-600 rounded-full mix-blend-multiply filter blur-2xl opacity-20"></div>
 
-            <div className="bg-white/5 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-white/10 w-full max-w-md shadow-2xl relative z-10 animate-fade-in">
+            <div className="bg-white/5 backdrop-blur-md p-8 md:p-10 rounded-xl border border-white/10 w-full max-w-md shadow-2xl relative z-10 animate-fade-in">
                 <div className="text-center mb-8">
                     <h2 className="text-3xl font-black text-white tracking-tight">
                         Portfolio <span className="text-secondary-400">Backoffice</span>
@@ -98,7 +98,7 @@ const LoginPage: React.FC = () => {
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full bg-gradient-to-r from-secondary-600 to-secondary-700 hover:from-secondary-500 hover:to-secondary-600 text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-secondary-500/10 active:scale-[0.98]"
+                        className="w-full bg-secondary-600 hover:bg-secondary-500 text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-secondary-500/10 active:scale-[0.98]"
                     >
                         {isLoading ? 'Signing in...' : 'Sign In'}
                     </button>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Sparkles, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useDarkModeContext } from "./ThemeContext";
 
 const Header = () => {
@@ -54,13 +54,8 @@ const Header = () => {
     >
       <nav className="container mx-auto px-6">
         <div className="flex items-center justify-between">
-          {/* Brand Logo & Tagline */}
-          <a href="#home" className="flex items-center space-x-3 group">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#FF6B00] to-[#00C853] p-0.5 shadow-orange-glow group-hover:scale-105 transition-transform duration-300">
-              <div className="w-full h-full bg-[#07090E] rounded-[10px] flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-[#FF6B00] group-hover:text-[#00C853] transition-colors" />
-              </div>
-            </div>
+          {/* Brand Name */}
+          <a href="#home" className="flex items-center group">
             <div className="flex flex-col">
               <span className="text-sm font-bold tracking-wider text-white uppercase group-hover:text-[#FF6B00] transition-colors">
                 TANDAH MARCELLE
@@ -80,7 +75,7 @@ const Header = () => {
                   key={item.href}
                   href={item.href}
                   className={`relative px-4 py-1.5 text-xs font-semibold rounded-full transition-all duration-300 ${isActive
-                      ? "text-white bg-gradient-to-r from-[#FF6B00] to-[#E05A00] shadow-orange-glow"
+                      ? "text-white bg-[#FF6B00] shadow-orange-glow"
                       : "text-slate-300 hover:text-white hover:bg-white/5"
                     }`}
                 >
@@ -130,7 +125,7 @@ const Header = () => {
         {/* Mobile Navigation Drawer */}
         {isMenuOpen && (
           <div className="lg:hidden mt-4 pb-4 animate-fade-in">
-            <div className="flex flex-col space-y-2 bg-[#0F131D]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl">
+            <div className="flex flex-col space-y-2 bg-[#0F131D]/95 backdrop-blur-xl border border-white/10 rounded-lg p-4 shadow-2xl">
               {navItems.map((item) => {
                 const isActive = activeSection === item.id;
                 return (
@@ -138,7 +133,7 @@ const Header = () => {
                     key={item.href}
                     href={item.href}
                     className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${isActive
-                        ? "bg-gradient-to-r from-[#FF6B00] to-[#E05A00] text-white"
+                        ? "bg-[#FF6B00] text-white"
                         : "text-slate-300 hover:bg-white/5 hover:text-white"
                       }`}
                     onClick={() => setIsMenuOpen(false)}

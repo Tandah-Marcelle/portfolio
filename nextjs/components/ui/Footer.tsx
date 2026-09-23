@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#FF6B00] to-[#00C853] p-0.5 shadow-orange-glow">
+              <div className="w-10 h-10 rounded-xl bg-[#FF6B00] p-0.5 shadow-orange-glow">
                 <div className="w-full h-full bg-[#07090E] rounded-[10px] flex items-center justify-center">
                   <Code2 className="w-5 h-5 text-[#FF6B00]" />
                 </div>

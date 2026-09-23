@@ -171,12 +171,12 @@ export default function CanvasScrollSequence({
     return (
         <div
             ref={containerRef}
-            className={`relative overflow-hidden ${isInline ? "w-full h-full min-h-[380px] md:min-h-[480px] rounded-3xl" : "fixed inset-0 z-0 pointer-events-none"
+            className={`relative overflow-hidden ${isInline ? "w-full h-full min-h-[380px] md:min-h-[480px] rounded-xl" : "fixed inset-0 z-0 pointer-events-none"
                 } ${className}`}
         >
             {/* Sleek Preloader Overlay */}
             {isLoading && (
-                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#07090E] text-white p-6 rounded-3xl">
+                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#07090E] text-white p-6 rounded-xl">
                     <div className="relative w-16 h-16 mb-4">
                         <div className="absolute inset-0 rounded-full border-2 border-[#00C853]/20 border-t-[#FF6B00] animate-spin" />
                         <div className="absolute inset-0 flex items-center justify-center font-bold text-xs text-[#FF6B00]">

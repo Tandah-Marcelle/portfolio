@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useLockBody } from "../ui/useLockBody";
+import Reveal from "../ui/Reveal";
 import {
   ExternalLink,
   Star,
@@ -11,7 +12,6 @@ import {
   Briefcase,
   Award,
   Users,
-  FolderGit2,
   Sparkles,
   Layers,
   ChevronLeft,
@@ -78,7 +78,7 @@ const GallerySlider = ({ images, title, onExpand }: { images: string[]; title: s
   if (images.length === 0) return null;
 
   return (
-    <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 bg-[#07090E] group/gallery">
+    <div className="relative w-full rounded-lg overflow-hidden border border-white/10 bg-[#07090E] group/gallery">
       {images.map((src, idx) => (
         <img
           key={`${src}-${idx}`}
@@ -449,11 +449,6 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 space-y-3">
-          <div className="inline-flex items-center space-x-2 badge-emerald">
-            <FolderGit2 className="w-4 h-4 text-[#00C853]" />
-            <span>Featured Case Studies</span>
-          </div>
-
           <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight uppercase">
             Portfolio <span className="text-gradient-orange">Showcase</span>
           </h2>
@@ -469,7 +464,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
             <button
               onClick={() => setActiveTab("development")}
               className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center space-x-2 ${activeTab === "development"
-                  ? "bg-gradient-to-r from-[#FF6B00] to-[#E05A00] text-white shadow-orange-glow"
+                  ? "bg-[#FF6B00] text-white shadow-orange-glow"
                   : "text-slate-400 hover:text-white"
                 }`}
             >
@@ -480,7 +475,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
             <button
               onClick={() => setActiveTab("graphics")}
               className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center space-x-2 ${activeTab === "graphics"
-                  ? "bg-gradient-to-r from-[#FF6B00] to-[#E05A00] text-white shadow-orange-glow"
+                  ? "bg-[#FF6B00] text-white shadow-orange-glow"
                   : "text-slate-400 hover:text-white"
                 }`}
             >
@@ -492,6 +487,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
 
         {/* Development Projects Grid */}
         {activeTab === "development" && (
+          <Reveal key={`dev-${activeCategory}`}>
           <>
             {/* Category lanes */}
             {projectCategories.length > 2 && (
@@ -501,7 +497,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
                     className={`px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all duration-300 border ${activeCategory === cat
-                        ? "bg-gradient-to-r from-[#FF6B00] to-[#E05A00] text-white border-transparent shadow-orange-glow"
+                        ? "bg-[#FF6B00] text-white border-transparent shadow-orange-glow"
                         : "bg-[#0F131D]/80 text-slate-400 border-white/10 hover:text-white hover:border-[#FF6B00]/50"
                       }`}
                   >
@@ -514,7 +510,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
               {visibleProjects.map((project, index) => (
               <div
                 key={index}
-                className="glass-card rounded-3xl overflow-hidden border border-white/10 flex flex-col justify-between group hover:border-[#FF6B00]/40 transition-all duration-500"
+                className="glass-card rounded-xl overflow-hidden border border-white/10 flex flex-col justify-between group hover:border-[#FF6B00]/40 transition-all duration-500"
               >
                 <div>
                   {/* Thumbnail Image (first gallery image, else cover) */}
@@ -527,11 +523,11 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
                         onClick={() => openImagePreview(galleryOf(project)[0])}
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-[#0F131D] to-[#161C2A] flex items-center justify-center">
+                      <div className="w-full h-full bg-[#0F131D] flex items-center justify-center">
                         <Code size={48} className="text-[#FF6B00] opacity-40" />
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F131D] via-transparent to-transparent opacity-80" />
+                    <div className="absolute inset-0 bg-black/30 opacity-80" />
 
                     {project.featured && (
                       <div className="absolute top-4 right-4 bg-[#FF6B00] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-orange-glow">
@@ -594,10 +590,12 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
               ))}
             </div>
           </>
+          </Reveal>
         )}
 
         {/* Graphic Design Gallery — grouped by collection */}
         {activeTab === "graphics" && (
+          <Reveal key={`gfx-${activeDesignCategory}`}>
           <div className="space-y-12 animate-fade-in">
             <div className="max-w-3xl mx-auto text-center">
               <p className="text-slate-300 text-sm italic">
@@ -613,7 +611,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
                     key={cat}
                     onClick={() => setActiveDesignCategory(cat)}
                     className={`px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all duration-300 border ${activeDesignCategory === cat
-                        ? "bg-gradient-to-r from-[#FF6B00] to-[#E05A00] text-white border-transparent shadow-orange-glow"
+                        ? "bg-[#FF6B00] text-white border-transparent shadow-orange-glow"
                         : "bg-[#0F131D]/80 text-slate-400 border-white/10 hover:text-white hover:border-[#FF6B00]/50"
                       }`}
                   >
@@ -633,14 +631,14 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
                   <span className="text-[11px] font-mono text-slate-400 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full">
                     {group.items.length} {group.items.length === 1 ? "piece" : "pieces"}
                   </span>
-                  <div className="flex-1 h-px bg-gradient-to-r from-white/15 to-transparent" />
+                      <div className="flex-1 h-px bg-white/15" />
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                   {group.items.map((design, index) => (
                     <div
                       key={`${group.category}-${index}`}
-                      className="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer border border-white/10 shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:border-[#FF6B00]/40"
+                      className="group relative aspect-[3/4] rounded-lg overflow-hidden cursor-pointer border border-white/10 shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:border-[#FF6B00]/40"
                       onClick={() => openImagePreview(design.url)}
                     >
                       <img
@@ -648,7 +646,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
                         alt={design.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#07090E]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <div>
                           <p className="text-white text-xs font-bold leading-snug mb-1">{design.title}</p>
                           <span className="text-[#FF6B00] text-[11px] uppercase font-bold tracking-widest flex items-center gap-1">
@@ -662,12 +660,13 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
               </div>
             ))}
           </div>
+          </Reveal>
         )}
 
         {/* Modal Case Study Drawer */}
         {isModalOpen && selectedProject && (
           <div className="fixed inset-0 bg-black/90 backdrop-blur-xl flex items-center justify-center z-[60] p-2 md:p-6 animate-fade-in">
-            <div className="bg-[#0F131D] border border-white/15 rounded-3xl max-w-[1720px] w-full max-h-[94vh] overflow-hidden relative shadow-2xl flex flex-col text-white">
+            <div className="bg-[#0F131D] border border-white/15 rounded-xl max-w-[1720px] w-full max-h-[94vh] overflow-hidden relative shadow-2xl flex flex-col text-white">
               <button
                 onClick={closeModal}
                 className="absolute top-6 right-6 text-slate-400 hover:text-white z-50 bg-white/10 rounded-full p-2.5 transition-colors border border-white/10"
@@ -711,7 +710,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
                     ) : null}
 
                     {selectedProject.background ? (
-                      <section className="glass-panel p-5 rounded-2xl border border-white/10">
+                      <section className="glass-panel p-5 rounded-lg border border-white/10">
                         <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-2">
                           Problem Statement & Context
                         </h4>
@@ -722,7 +721,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
                     ) : null}
 
                     {selectedProject.contribution ? (
-                      <section className="p-5 rounded-2xl bg-[#00C853]/10 border border-[#00C853]/30">
+                      <section className="p-5 rounded-lg bg-[#00C853]/10 border border-[#00C853]/30">
                         <h4 className="flex items-center text-xs font-bold text-[#00C853] uppercase tracking-widest mb-2">
                           <Users size={14} className="mr-2" /> Key Role & Engineering Contribution
                         </h4>
@@ -738,7 +737,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
                     <div className="space-y-6">
                       {/* Video demo (if any) */}
                       {selectedProject.videoPath && (
-                        <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#07090E]">
+                        <div className="rounded-lg overflow-hidden border border-white/10 bg-[#07090E]">
                           <video controls className="w-full aspect-video" poster={selectedProject.image}>
                             <source src={selectedProject.videoPath} type="video/mp4" />
                           </video>
@@ -747,7 +746,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
 
                       {/* Sliding image gallery (if any), else single cover */}
                       {selectedProject.title.includes("Event Management") ? (
-                        <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#07090E]">
+                        <div className="rounded-lg overflow-hidden border border-white/10 bg-[#07090E]">
                           <div className="p-4 bg-[#07090E]">
                             <div className="mb-3 rounded-xl overflow-hidden bg-[#0F131D] flex items-center justify-center h-64 border border-white/10">
                               <img
@@ -782,7 +781,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
                         />
                       ) : !selectedProject.videoPath ? (
                         selectedProject.image ? (
-                          <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#07090E]">
+                          <div className="rounded-lg overflow-hidden border border-white/10 bg-[#07090E]">
                             <img
                               src={selectedProject.image}
                               alt={selectedProject.title}
@@ -791,7 +790,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
                             />
                           </div>
                         ) : (
-                          <div className="w-full h-56 bg-gradient-to-br from-[#0F131D] to-[#161C2A] flex items-center justify-center rounded-2xl border border-white/10">
+                          <div className="w-full h-56 bg-[#0F131D] flex items-center justify-center rounded-lg border border-white/10">
                             <Code size={48} className="text-[#FF6B00] opacity-40" />
                           </div>
                         )
@@ -864,7 +863,7 @@ const ProjectsSection = ({ data, graphics }: ProjectsSectionProps) => {
               <img
                 src={previewImage}
                 alt="Preview"
-                className="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl"
+                className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
               />
             </div>

@@ -66,13 +66,13 @@
     box-shadow: 0 12px 30px -10px rgba(0, 200, 83, 0.25);
   }
 
-  /* Primary Tech Orange Button */
+  /* Primary Tech Orange Button (flat) */
   .btn-tech-orange {
-    background: linear-gradient(135deg, #FF6B00 0%, #E05A00 100%);
+    background: #FF6B00;
     color: #FFFFFF;
     font-weight: 600;
     padding: 0.75rem 1.75rem;
-    border-radius: 9999px;
+    border-radius: 12px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px -2px rgba(255, 107, 0, 0.4);
     display: inline-flex;
@@ -83,16 +83,17 @@
 
   .btn-tech-orange:hover {
     transform: translateY(-2px);
+    background: #E05A00;
     box-shadow: 0 8px 25px 0 rgba(255, 107, 0, 0.6);
   }
 
-  /* Secondary Deep Emerald Button / Badge */
+  /* Secondary Deep Emerald Button / Badge (flat) */
   .btn-tech-emerald {
-    background: linear-gradient(135deg, #00C853 0%, #00A543 100%);
+    background: #00C853;
     color: #FFFFFF;
     font-weight: 600;
     padding: 0.75rem 1.75rem;
-    border-radius: 9999px;
+    border-radius: 12px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px -2px rgba(0, 200, 83, 0.35);
     display: inline-flex;
@@ -103,6 +104,7 @@
 
   .btn-tech-emerald:hover {
     transform: translateY(-2px);
+    background: #00A543;
     box-shadow: 0 8px 25px 0 rgba(0, 200, 83, 0.5);
   }
 
@@ -114,7 +116,7 @@
     color: #FFFFFF;
     font-weight: 500;
     padding: 0.75rem 1.75rem;
-    border-radius: 9999px;
+    border-radius: 12px;
     transition: all 0.3s ease;
   }
 
@@ -152,15 +154,11 @@
   }
 
   .text-gradient-orange {
-    background: linear-gradient(135deg, #FF9E59 0%, #FF6B00 50%, #E05A00 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #FF6B00;
   }
 
   .text-gradient-emerald {
-    background: linear-gradient(135deg, #55E4A0 0%, #00C853 50%, #00A543 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #00C853;
   }
 
   .card-hover {
@@ -168,11 +166,11 @@
   }
 
   .btn-primary {
-    @apply bg-tech-orange text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-tech-orange-600 hover:shadow-lg;
+    @apply bg-tech-orange text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:bg-tech-orange-600 hover:shadow-lg;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-tech-orange to-tech-emerald bg-clip-text text-transparent;
+    @apply text-tech-orange;
   }
 }
 
@@ -591,14 +589,14 @@ html:not(.dark) .text-\[\#00C853\] {
 
 /* --- Glass + badges + buttons tuned for light --- */
 html:not(.dark) .glass-panel {
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #fdf6ee;
+  border: 1px solid #ecddc9;
   box-shadow: 0 8px 32px -12px rgba(15, 23, 42, 0.15);
 }
 
 html:not(.dark) .glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #fdf6ee;
+  border: 1px solid #ecddc9;
   box-shadow: 0 10px 30px -14px rgba(15, 23, 42, 0.18);
 }
 
@@ -650,9 +648,7 @@ html:not(.dark) #hero {
 }
 
 html:not(.dark) #hero .text-gradient-orange {
-  background: #ffffff;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
 }
 
 html:not(.dark) #hero h1 {
@@ -664,23 +660,7 @@ html:not(.dark) #hero .btn-tech-orange {
   box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.45);
 }
 
-html:not(.dark) #hero .stream-fade-top {
-  background-image: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0));
-}
-
-html:not(.dark) #hero .stream-fade-bottom {
-  background-image: linear-gradient(to top, #ffffff, rgba(255, 255, 255, 0));
-}
-
-/* Skillsruimte: no dark shadow fades, no colored ribbon rules,
-   chips reduced to clean white pills in light mode */
-html:not(.dark) .soft-fade-top {
-  background-image: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0));
-}
-
-html:not(.dark) .soft-fade-bottom {
-  background-image: linear-gradient(to top, #ffffff, rgba(255, 255, 255, 0));
-}
+/* Skills: no colored ribbon rules, chips reduced to clean white pills in light mode */
 
 html:not(.dark) .skills-ribbon {
   border-top-width: 0;
@@ -697,4 +677,21 @@ html:not(.dark) .skill-chip {
 
 html:not(.dark) .skill-chip:hover {
   border-color: #cbd5e1;
+}
+
+/* Plain skill marquee words: white in dark, black in light */
+.skill-word {
+  color: #ffffff;
+}
+
+.skill-dot {
+  color: #475569;
+}
+
+html:not(.dark) .skill-word {
+  color: #0f172a;
+}
+
+html:not(.dark) .skill-dot {
+  color: #94a3b8;
 }

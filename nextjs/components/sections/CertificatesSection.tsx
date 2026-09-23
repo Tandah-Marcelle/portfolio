@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useLockBody } from "../ui/useLockBody";
-import { X, Download, FileText, Eye, Image as ImageIcon, Award, Sparkles } from "lucide-react";
+import Reveal from "../ui/Reveal";
+import { X, Download, FileText, Eye, Image as ImageIcon, Award } from "lucide-react";
 const PythonCertImage = "/assets/images/Cert python for data science.jpeg";
 import type { BackendCertificate } from "../../lib/types";
 
@@ -105,7 +106,7 @@ const CertificatesSection = ({ data }: CertificatesSectionProps) => {
     <section id="certificates" className="py-16 relative overflow-hidden bg-[#07090E]/90 border-y border-white/10">
       <div className="container mx-auto px-6 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center space-x-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#FF6B00] to-[#00C853] p-0.5 shadow-orange-glow">
+            <div className="w-9 h-9 rounded-xl bg-[#FF6B00] p-0.5 shadow-orange-glow">
             <div className="w-full h-full bg-[#07090E] rounded-[10px] flex items-center justify-center">
               <Award className="w-4 h-4 text-[#FF6B00]" />
             </div>
@@ -121,17 +122,17 @@ const CertificatesSection = ({ data }: CertificatesSectionProps) => {
         </div>
 
         <div className="badge-emerald text-xs">
-          <Sparkles className="w-3.5 h-3.5" />
           <span>Industry Accredited</span>
         </div>
       </div>
 
       {/* Infinite Scroll Marquee */}
+      <Reveal>
       <div className="certificates-scroll flex space-x-5 py-2 will-change-transform">
         {duplicatedCertificates.map((certificate, index) => (
           <div
             key={`${certificate.name}-${index}`}
-            className="flex-shrink-0 glass-card p-4 rounded-2xl cursor-pointer border border-white/10 hover:border-[#FF6B00]/40 transition-all duration-300 w-[220px] md:w-[280px] group"
+            className="flex-shrink-0 glass-card p-4 rounded-lg cursor-pointer border border-white/10 hover:border-[#FF6B00]/40 transition-all duration-300 w-[220px] md:w-[280px] group"
             onClick={() => openModal(certificate)}
           >
             <div className="flex items-center space-x-3">
@@ -152,14 +153,15 @@ const CertificatesSection = ({ data }: CertificatesSectionProps) => {
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+            </div>
+          ))}
+        </div>
+      </Reveal>
 
       {/* PDF / Image Preview Modal */}
       {isModalOpen && selectedPdf && (
         <div className="fixed inset-0 bg-black/90 backdrop-blur-xl flex items-center justify-center z-[70] p-4 animate-fade-in">
-          <div className="bg-[#0F131D] border border-white/15 rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden text-white">
+          <div className="bg-[#0F131D] border border-white/15 rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden text-white">
             <div className="flex items-center justify-between p-6 border-b border-white/10">
               <h3 className="text-base font-bold text-white truncate pr-4">
                 {selectedPdf.name}
@@ -185,12 +187,12 @@ const CertificatesSection = ({ data }: CertificatesSectionProps) => {
                 <img
                   src={selectedPdf.path}
                   alt={selectedPdf.name}
-                  className="w-full h-auto rounded-2xl max-h-[70vh] object-contain mx-auto"
+                  className="w-full h-auto rounded-lg max-h-[70vh] object-contain mx-auto"
                 />
               ) : (
                 <iframe
                   src={selectedPdf.path}
-                  className="w-full h-[70vh] border border-white/10 rounded-2xl bg-white"
+                  className="w-full h-[70vh] border border-white/10 rounded-lg bg-white"
                   title={selectedPdf.name}
                 />
               )}

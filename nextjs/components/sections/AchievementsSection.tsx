@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useLockBody } from "../ui/useLockBody";
+import Reveal from "../ui/Reveal";
 import { Trophy, Award, Calendar, MapPin, Sparkles, ChevronLeft, ChevronRight, X, Maximize2 } from "lucide-react";
 import type { BackendAchievement } from "../../lib/types";
 
@@ -23,7 +24,7 @@ const ImageSlider = ({ images, title, onExpand }: { images: string[]; title: str
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="relative w-full mb-5 overflow-hidden rounded-2xl border border-white/10 aspect-[16/9] bg-[#0B0F17] group/slider">
+    <div className="relative w-full mb-5 overflow-hidden rounded-lg border border-white/10 aspect-[16/9] bg-[#0B0F17] group/slider">
       {images.map((src, idx) => (
         <img
           key={`${src}-${idx}`}
@@ -35,7 +36,7 @@ const ImageSlider = ({ images, title, onExpand }: { images: string[]; title: str
         />
       ))}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-black/25 pointer-events-none" />
 
       {onExpand && (
         <div className="absolute top-3 left-3 px-2.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white/80 flex items-center gap-1.5 text-[10px] font-mono opacity-0 group-hover/slider:opacity-100 transition-opacity pointer-events-none">
@@ -145,11 +146,6 @@ const AchievementsSection = ({ data }: AchievementsSectionProps) => {
       <div className="w-full max-w-[1850px] mx-auto px-4 md:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 space-y-3">
-          <div className="inline-flex items-center space-x-2 badge-emerald">
-            <Trophy className="w-4 h-4 text-[#00C853]" />
-            <span>Honors & Awards</span>
-          </div>
-
           <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight uppercase">
             Achievements & <span className="text-gradient-orange">Recognitions</span>
           </h2>
@@ -160,18 +156,19 @@ const AchievementsSection = ({ data }: AchievementsSectionProps) => {
         </div>
 
         {/* Cards Grid — 5 per row, edge to edge */}
+        <Reveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {achievements.map((achievement, index) => {
             const IconComponent = achievement.icon;
             return (
               <div
                 key={index}
-                className="glass-card p-6 rounded-3xl border border-white/10 hover:border-[#FF6B00]/40 transition-all duration-300 flex flex-col justify-between group"
+                className="glass-card p-6 rounded-xl border border-white/10 hover:border-[#FF6B00]/40 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   {/* Card Header */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#FF6B00] to-[#00C853] p-0.5 shadow-orange-glow">
+                    <div className="w-12 h-12 rounded-lg bg-[#FF6B00] p-0.5 shadow-orange-glow">
                       <div className="w-full h-full bg-[#0F131D] rounded-[14px] flex items-center justify-center">
                         <IconComponent className="w-6 h-6 text-[#FF6B00] group-hover:scale-110 transition-transform" />
                       </div>
@@ -223,6 +220,7 @@ const AchievementsSection = ({ data }: AchievementsSectionProps) => {
             );
           })}
         </div>
+        </Reveal>
       </div>
 
       {/* Fullscreen Lightbox */}
@@ -266,7 +264,7 @@ const AchievementsSection = ({ data }: AchievementsSectionProps) => {
             src={lightbox.images[lightbox.index]}
             alt={`${lightbox.title} expanded view`}
             onClick={(e) => e.stopPropagation()}
-            className="max-w-full max-h-full object-contain rounded-2xl border border-white/15 shadow-2xl"
+            className="max-w-full max-h-full object-contain rounded-lg border border-white/15 shadow-2xl"
           />
         </div>
       )}
