@@ -555,11 +555,11 @@ html:not(.dark) .hover\:text-white:hover {
 }
 
 html:not(.dark) .text-slate-200 {
-  color: #334155;
+  color: #0f172a;
 }
 
 html:not(.dark) .text-slate-300 {
-  color: #475569;
+  color: #0f172a;
 }
 
 html:not(.dark) .text-slate-400 {
@@ -644,7 +644,7 @@ html:not(.dark) .blur-\[180px\] {
 
 /* Hero goes brand-orange in light mode while the stream stays white */
 html:not(.dark) #hero {
-  background: linear-gradient(135deg, #ff8a2a 0%, #ff6b00 55%, #e05a00 100%);
+  background: linear-gradient(135deg, #d97a2e 0%, #c9661a 55%, #ad5210 100%);
 }
 
 html:not(.dark) #hero .text-gradient-orange {

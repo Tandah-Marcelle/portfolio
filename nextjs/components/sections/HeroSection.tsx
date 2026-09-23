@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useLockBody } from "../ui/useLockBody";
 import Reveal from "../ui/Reveal";
-import { ArrowRight, Download, Linkedin, Github, FileText, Image as ImageIcon, Eye, X, Award, CheckCircle2, Code2, Sparkles, Cpu, ShieldCheck } from "lucide-react";
+import { ArrowRight, Download, Linkedin, Github, Eye, X, CheckCircle2, Code2, Sparkles, Cpu, ShieldCheck } from "lucide-react";
 import type { BackendHero, BackendCertificate } from "@/lib/types";
 
 const PythonCertImage = "/assets/images/Cert python for data science.jpeg";
@@ -37,7 +37,6 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
   const linkedinUrl =
     data?.linkedinUrl ||
     "https://www.linkedin.com/in/tandah-djimeli-marcelle-1b1701303?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app";
-  const streamTitle = data?.streamTitle || "Verified Credentials Stream";
   const streamHint = data?.streamHint || "Click to Preview";
 
   const verifiedCerts = (certificates ?? []).filter((c) => c.verified);
@@ -241,12 +240,8 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
 
           {/* RIGHT COLUMN: Dynamic 3D Angled Certificate Marquee Showcase (Untouched) */}
           <div className="lg:col-span-5 relative perspective-tilt">
-            {/* Header Badge overlay */}
-            <div className="flex items-center justify-between mb-4 px-2">
-              <div className="inline-flex items-center space-x-2 text-xs font-mono text-[#00C853] bg-[#00C853]/10 px-3 py-1 rounded-full border border-[#00C853]/30">
-                <Award size={14} className="text-[#FF6B00]" />
-                <span>{streamTitle}</span>
-              </div>
+            {/* Header hint overlay */}
+            <div className="flex items-center justify-end mb-4 px-2">
               <span className="text-[11px] font-mono text-slate-400">{streamHint}</span>
             </div>
 
@@ -263,14 +258,6 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
                       onClick={() => openModal(cert)}
                       className="glass-card p-4 rounded-lg border border-white/10 hover:border-[#FF6B00] cursor-pointer transition-all duration-300 group bg-[#0F131D]/90"
                     >
-                      <div className="flex items-center space-x-3 mb-2">
-                        <div className="p-2 bg-[#FF6B00]/10 rounded-xl text-[#FF6B00] border border-[#FF6B00]/30 group-hover:scale-110 transition-transform">
-                          {cert.type === "image" ? <ImageIcon size={16} /> : <FileText size={16} />}
-                        </div>
-                        <span className="text-[10px] font-mono text-[#00C853] uppercase tracking-wider">
-                          {cert.issuer}
-                        </span>
-                      </div>
                       <h4 className="text-xs font-bold text-white group-hover:text-[#FF6B00] transition-colors line-clamp-2">
                         {cert.displayName}
                       </h4>
@@ -290,14 +277,6 @@ const HeroSection = ({ data, certificates, githubUrl }: HeroSectionProps) => {
                       onClick={() => openModal(cert)}
                       className="glass-card p-4 rounded-lg border border-white/10 hover:border-[#00C853] cursor-pointer transition-all duration-300 group bg-[#0F131D]/90"
                     >
-                      <div className="flex items-center space-x-3 mb-2">
-                        <div className="p-2 bg-[#00C853]/10 rounded-xl text-[#00C853] border border-[#00C853]/30 group-hover:scale-110 transition-transform">
-                          {cert.type === "image" ? <ImageIcon size={16} /> : <FileText size={16} />}
-                        </div>
-                        <span className="text-[10px] font-mono text-[#FF6B00] uppercase tracking-wider">
-                          {cert.issuer}
-                        </span>
-                      </div>
                       <h4 className="text-xs font-bold text-white group-hover:text-[#00C853] transition-colors line-clamp-2">
                         {cert.displayName}
                       </h4>
